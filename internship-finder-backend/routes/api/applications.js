@@ -1,4 +1,4 @@
-```javascript
+
 // routes/api/applications.js
 const express = require('express');
 const router = express.Router();
@@ -116,4 +116,3 @@ router.put('/:applicationId/status', [protect, authorize('employer')], async (re
 
 
 module.exports = router;
-```

@@ -1,5 +1,5 @@
-```javascript
 // routes/api/auth.js
+
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -124,4 +124,3 @@ router.get('/me', protect, async (req, res) => {
 
 
 module.exports = router;
-```

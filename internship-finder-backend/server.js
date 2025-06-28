@@ -24,6 +24,7 @@ app.get('/', (req, res) => res.send('Internship Finder API Running'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/internships', require('./routes/api/internships'));
 app.use('/api/applications', require('./routes/api/applications'));
+app.use('/api/users', require('./routes/api/users'));
 
 const PORT = process.env.PORT || 5000;
 

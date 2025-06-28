@@ -1,4 +1,4 @@
-```javascript
+
 // routes/api/internships.js
 const express = require('express');
 const router = express.Router();
@@ -209,4 +209,3 @@ router.delete('/:id', [protect, authorize('employer')], async (req, res) => {
 });
 
 module.exports = router;
-```

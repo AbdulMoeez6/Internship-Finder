@@ -21,13 +21,37 @@ const UserSchema = new mongoose.Schema({
         enum: ['student', 'employer'],
         required: true,
     },
-    companyName: { // Only for employers
-        type: String,
-        default: '',
-    },
     date: {
         type: Date,
         default: Date.now,
+    },
+
+    // --- NEW EMPLOYER FIELDS ---
+    companyName: {
+        type: String,
+        default: '',
+    },
+    companyWebsite: {
+        type: String,
+        default: '',
+    },
+    companyDescription: {
+        type: String,
+        default: '',
+    },
+
+    // --- NEW STUDENT FIELDS ---
+    skills: {
+        type: [String],
+        default: [],
+    },
+    education: {
+        type: String,
+        default: '',
+    },
+    resumeLink: {
+        type: String,
+        default: '',
     },
 });
 
