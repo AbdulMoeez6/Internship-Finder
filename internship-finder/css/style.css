@@ -1,3 +1,5 @@
+/* css/style.css */
+
 /* Basic Reset & General Styles */
 * {
     margin: 0;
@@ -226,6 +228,19 @@ form p a {
 form p a:hover {
     text-decoration: underline;
 }
+/* Add this inside or after your /* Forms */ 
+
+.error-message {
+    color: #dc3545; /* Red */
+    font-size: 0.8rem;
+    margin-top: -10px; /* Pull it a bit closer to the input field above */
+    margin-bottom: 10px;
+}
+
+/* Optional: Add a red border to the invalid input field */
+input.is-invalid {
+    border-color: #dc3545;
+}
 
 /* Filters */
 .filters {
@@ -262,21 +277,22 @@ footer {
 @media screen and (max-width: 768px) {
     header .nav-links {
         position: absolute;
-        right: 0;
-        top: 8vh; /* Adjust based on header height */
-        background-color: #333;
+        right: 0px;
+        height: 92vh; /* Take up most of the screen height */
+        top: 8vh; /* Position it below the header */
+        background-color: #333; /* Same as header */
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 50%;
-        transform: translateX(100%);
+        width: 50%; /* Take up half the screen width */
+        transform: translateX(100%); /* Start off-screen to the right */
         transition: transform 0.5s ease-in;
         padding-bottom: 10px;
     }
     header .nav-links li {
         opacity: 0;
         margin-left: 0;
-        margin-bottom: 10px;
+        margin: 20px 0; /* Add more space between links */
     }
     .burger {
         display: block;
@@ -293,6 +309,15 @@ footer {
             opacity: 1;
             transform: translateX(0px);
         }
+    }
+    .toggle-burger .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .toggle-burger .line2 {
+        opacity: 0;
+    }
+    .toggle-burger .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
     }
 
     .internship-listings {
@@ -317,4 +342,134 @@ footer {
         width: 100%;
         margin-bottom: 5px;
     }
+}
+/* Add this to the end of css/style.css */
+
+/* Styling for the application list on the employer dashboard */
+.application-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.application-item:last-child {
+    border-bottom: none;
+}
+
+.application-actions .action-button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.action-button.shortlist {
+    background-color: #28a745; /* Green */
+}
+.action-button.shortlist:hover {
+    background-color: #218838;
+}
+
+.action-button.reject {
+    background-color: #dc3545; /* Red */
+}
+.action-button.reject:hover {
+    background-color: #c82333;
+}
+
+/* Color-code the application statuses */
+.status-applied { color: #007bff; } /* Blue */
+.status-viewed-by-employer { color: #17a2b8; } /* Teal */
+.status-shortlisted { color: #28a745; } /* Green */
+.status-rejected { color: #dc3545; } /* Red */
+.status-hired { color: #ffc107; } /* Yellow */
+
+/* Add this to the end of css/style.css */
+
+/* --- NOTIFICATION STYLES --- */
+#notification-container {
+    position: fixed; /* Stays on screen even when scrolling */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center the container */
+    width: 100%;
+    max-width: 500px;
+    z-index: 2000; /* Ensure it's on top of all other content */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notification {
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    opacity: 0; /* Start hidden */
+    transform: translateY(-30px); /* Start off-screen */
+    animation: slideInAndOut 4s forwards; /* 4 second total duration */
+}
+
+/* Style for success messages (green) */
+.notification.success {
+    background-color: #28a745; 
+}
+
+/* Style for error messages (red) */
+.notification.error {
+    background-color: #dc3545;
+}
+
+/* The animation to make it slide in and then out */
+@keyframes slideInAndOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+/* Add this to the end of css/style.css */
+
+/* --- LOADING SPINNER STYLES --- */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    width: 100%;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
