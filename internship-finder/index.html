@@ -4,24 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internship Finder</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="notification-container"></div>
+    
     <header>
         <nav>
             <div class="logo">
-                <a href="#" onclick="showSection('home-section'); return false;">Internship Finder</a>
+                <a href="#" onclick="showSection('home-section'); return false;">
+                    <i class="fa-solid fa-briefcase"></i> Internship Finder
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="#" onclick="showSection('home-section'); return false;">Home</a></li>
-                <li><a href="#" onclick="showSection('internships-section'); loadInternships(); return false;">Browse Internships</a></li>
-                 <li id="nav-profile" class="hidden"><a href="#" onclick="loadProfilePage(); return false;">My Profile</a></li>
-                <li id="nav-login"><a href="#" onclick="showSection('login-section'); return false;">Login</a></li>
-                <li id="nav-register"><a href="#" onclick="showSection('register-section'); return false;">Register</a></li>
-                <li id="nav-student-dashboard" class="hidden"><a href="#" onclick="showSection('student-dashboard-section'); loadStudentDashboard(); return false;">My Dashboard</a></li>
-                <li id="nav-employer-dashboard" class="hidden"><a href="#" onclick="showSection('employer-dashboard-section'); loadEmployerDashboard(); return false;">Employer Dashboard</a></li>
-                <li id="nav-post-internship" class="hidden"><a href="#" onclick="showSection('post-internship-section'); return false;">Post Internship</a></li>
+                <li><a href="#" onclick="showSection('internships-section'); loadInternships(); return false;">Browse</a></li>
+                 <li id="nav-profile" class="hidden"><a href="#" onclick="loadProfilePage(); return false;">Profile</a></li>
+                <li id="nav-login"><a href="#" onclick="showSection('login-section'); return false;" class="btn-login">Login</a></li>
+                <li id="nav-register"><a href="#" onclick="showSection('register-section'); return false;" class="btn-register">Register</a></li>
+                <li id="nav-student-dashboard" class="hidden"><a href="#" onclick="showSection('student-dashboard-section'); loadStudentDashboard(); return false;">Dashboard</a></li>
+                <li id="nav-employer-dashboard" class="hidden"><a href="#" onclick="showSection('employer-dashboard-section'); loadEmployerDashboard(); return false;">Dashboard</a></li>
+                <li id="nav-post-internship" class="hidden"><a href="#" onclick="showSection('post-internship-section'); return false;">Post Job</a></li>
                 <li id="nav-logout" class="hidden"><a href="#" onclick="logout(); return false;">Logout</a></li>
             </ul>
             <div class="burger">
@@ -33,213 +45,239 @@
     </header>
 
     <main id="main-content">
-        <!-- Sections will be loaded/shown here by JavaScript -->
-        <section id="home-section" class="content-section active">
-            <h1>Welcome to Internship Finder</h1>
-            <p>Find your dream internships or the perfect candidate.</p>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Search by keyword, category, location...">
-                <button onclick="searchInternships()">Search</button>
+        <!-- Home Section -->
+        <section id="home-section" class="content-section active hero-wrapper">
+            <div class="hero-content">
+                <h1>Find your dream internship today.</h1>
+                <p>Connecting the best talent with the best companies.</p>
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Job title, keywords, or company...">
+                    <button onclick="searchInternships()">Search</button>
+                </div>
             </div>
-            <h2>Featured Internships</h2>
-            <div id="featured-internships" class="internship-listings">
-                <!-- Featured internships will be loaded here by JS -->
-                <p>Loading featured internships...</p>
+            
+            <div class="featured-wrapper">
+                <h2><i class="fa-solid fa-fire"></i> Featured Internships</h2>
+                <div id="featured-internships" class="internship-listings">
+                    <p>Loading featured internships...</p>
+                </div>
             </div>
         </section>
 
+        <!-- Browse Section -->
         <section id="internships-section" class="content-section hidden">
-            <h2>Available Internships</h2>
+            <div class="section-header">
+                <h2>Available Internships</h2>
+                <p>Explore opportunities tailored for you.</p>
+            </div>
             <div class="filters">
-                <select id="filter-category">
-                    <option value="">All Categories</option>
-                    <option value="IT">IT</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="Finance">Finance</option>
-                    <option value="HR">HR</option>
-                </select>
-                <select id="filter-location">
-                    <option value="">All Locations</option>
-                    <option value="Remote">Remote</option>
-                    <option value="New York">New York</option>
-                    <option value="San Francisco">San Francisco</option>
-                </select>
-                <button onclick="filterAndLoadInternships()">Filter</button>
-            </div>
-            <div id="all-internships" class="internship-listings">
-                <!-- All internships will be loaded here by JS -->
-            </div>
-        </section>
-
-        <section id="internship-detail-section" class="content-section hidden">
-            <!-- Internship details will be loaded here by JS -->
-            <h2>Internship Details</h2>
-            <div id="internship-detail-content"></div>
-        </section>
-
-        <section id="login-section" class="content-section hidden">
-            <h2>Login</h2>
-            <form id="login-form">
-                <div>
-                    <label for="login-email">Email:</label>
-                    <input type="email" id="login-email" required>
-                </div>
-                <div>
-                    <label for="login-password">Password:</label>
-                    <input type="password" id="login-password" required>
-                </div>
-                <button type="submit">Login</button>
-                <p>Don't have an account? <a href="#" onclick="showSection('register-section'); return false;">Register here</a></p>
-            </form>
-        </section>
-
-        <section id="register-section" class="content-section hidden">
-            <h2>Register</h2>
-            <form id="register-form">
-                <div>
-                    <label for="register-name">Full Name:</label>
-                    <input type="text" id="register-name" required>
-                </div>
-                <div>
-                    <label for="register-email">Email:</label>
-                    <input type="email" id="register-email" required>
-                </div>
-                <div>
-                    <label for="register-password">Password:</label>
-                    <input type="password" id="register-password" required>
-                </div>
-                <div>
-                    <label for="register-role">I am a:</label>
-                    <select id="register-role" required>
-                        <option value="student">Student/Fresher</option>
-                        <option value="employer">Employer</option>
-                    </select>
-                </div>
-                <div id="company-name-field" class="hidden">
-                    <label for="register-company-name">Company Name:</label>
-                    <input type="text" id="register-company-name">
-                </div>
-                <button type="submit">Register</button>
-                <p>Already have an account? <a href="#" onclick="showSection('login-section'); return false;">Login here</a></p>
-            </form>
-        </section>
-
-        <section id="student-dashboard-section" class="content-section hidden">
-            <h2>Student Dashboard</h2>
-            <h3>My Applications</h3>
-            <div id="student-applications" class="internship-listings">
-                <!-- Applied internships will be loaded here -->
-            </div>
-        </section>
-
-        <section id="employer-dashboard-section" class="content-section hidden">
-            <h2>Employer Dashboard</h2>
-            <h3>My Posted Internships</h3>
-            <div id="employer-posted-internships" class="internship-listings">
-                <!-- Posted internships by employer will be loaded here -->
-            </div>
-            <h3>Applications Received</h3>
-            <div id="employer-received-applications">
-                <!-- Applications received by employer will be loaded here -->
-            </div>
-        </section>
-
-        <section id="post-internship-section" class="content-section hidden">
-            <h2>Post New Internship</h2>
-            <form id="post-internship-form">
-                <div>
-                    <label for="post-title">Internship Title:</label>
-                    <input type="text" id="post-title" required>
-                </div>
-                <div>
-                    <label for="post-company">Company Name (auto-filled if logged in as employer):</label>
-                    <input type="text" id="post-company" required disabled>
-                </div>
-                <div>
-                    <label for="post-category">Category:</label>
-                    <select id="post-category" required>
+                <div class="filter-group">
+                    <i class="fa-solid fa-filter"></i>
+                    <select id="filter-category">
+                        <option value="">All Categories</option>
                         <option value="IT">IT</option>
                         <option value="Marketing">Marketing</option>
                         <option value="Finance">Finance</option>
                         <option value="HR">HR</option>
-                        <option value="Design">Design</option>
-                        <option value="Engineering">Engineering</option>
                     </select>
                 </div>
+                <div class="filter-group">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <select id="filter-location">
+                        <option value="">All Locations</option>
+                        <option value="Remote">Remote</option>
+                        <option value="New York">New York</option>
+                        <option value="San Francisco">San Francisco</option>
+                    </select>
+                </div>
+                <button onclick="filterAndLoadInternships()" class="btn-filter">Apply Filters</button>
+            </div>
+            <div id="all-internships" class="internship-listings"></div>
+        </section>
+
+        <!-- Internship Details -->
+        <section id="internship-detail-section" class="content-section hidden">
+            <button class="back-btn" onclick="showSection('internships-section')"><i class="fa-solid fa-arrow-left"></i> Back to list</button>
+            <div class="detail-card">
+                <h2>Internship Details</h2>
+                <div id="internship-detail-content"></div>
+            </div>
+        </section>
+
+        <!-- Login -->
+        <section id="login-section" class="content-section hidden small-container">
+            <div class="auth-box">
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Login to continue your journey</p>
+                <form id="login-form">
+                    <div>
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" required placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Login</button>
+                    <p class="auth-footer">Don't have an account? <a href="#" onclick="showSection('register-section'); return false;">Register here</a></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Register -->
+        <section id="register-section" class="content-section hidden small-container">
+            <div class="auth-box">
+                <h2>Create Account</h2>
+                <p class="auth-subtitle">Join us as a student or employer</p>
+                <form id="register-form">
+                    <div>
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" required placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label for="register-email">Email Address</label>
+                        <input type="email" id="register-email" required placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" required placeholder="••••••••">
+                    </div>
+                    <div>
+                        <label for="register-role">I am a:</label>
+                        <div class="select-wrapper">
+                            <select id="register-role" required>
+                                <option value="student">Student/Fresher</option>
+                                <option value="employer">Employer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="company-name-field" class="hidden">
+                        <label for="register-company-name">Company Name</label>
+                        <input type="text" id="register-company-name" placeholder="Company Ltd.">
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Register</button>
+                    <p class="auth-footer">Already have an account? <a href="#" onclick="showSection('login-section'); return false;">Login here</a></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Student Dashboard -->
+        <section id="student-dashboard-section" class="content-section hidden">
+            <h2>Student Dashboard</h2>
+            <h3>My Applications</h3>
+            <div id="student-applications" class="internship-listings"></div>
+        </section>
+
+        <!-- Employer Dashboard -->
+        <section id="employer-dashboard-section" class="content-section hidden">
+            <h2>Employer Dashboard</h2>
+            <div class="dashboard-grid">
                 <div>
-                    <label for="post-location">Location:</label>
-                    <input type="text" id="post-location" placeholder="e.g., New York or Remote" required>
+                    <h3>My Posted Internships</h3>
+                    <div id="employer-posted-internships" class="internship-listings"></div>
                 </div>
                 <div>
-                    <label for="post-stipend">Stipend (e.g., $500/month or Unpaid):</label>
-                    <input type="text" id="post-stipend" required>
+                    <h3>Applications Received</h3>
+                    <div id="employer-received-applications" class="application-list-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Post Internship -->
+        <section id="post-internship-section" class="content-section hidden small-container">
+            <h2>Post New Internship</h2>
+            <form id="post-internship-form" class="styled-form">
+                <div>
+                    <label for="post-title">Internship Title</label>
+                    <input type="text" id="post-title" required placeholder="e.g. Junior React Developer">
                 </div>
                 <div>
-                    <label for="post-duration">Duration (e.g., 3 months):</label>
-                    <input type="text" id="post-duration" required>
+                    <label for="post-company">Company Name</label>
+                    <input type="text" id="post-company" required disabled class="disabled-input">
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="post-category">Category</label>
+                        <select id="post-category" required>
+                            <option value="IT">IT</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Finance">Finance</option>
+                            <option value="HR">HR</option>
+                            <option value="Design">Design</option>
+                            <option value="Engineering">Engineering</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="post-location">Location</label>
+                        <input type="text" id="post-location" placeholder="e.g., Remote" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="post-stipend">Stipend</label>
+                        <input type="text" id="post-stipend" required placeholder="$500/month">
+                    </div>
+                    <div>
+                        <label for="post-duration">Duration</label>
+                        <input type="text" id="post-duration" required placeholder="3 months">
+                    </div>
                 </div>
                 <div>
-                    <label for="post-description">Description:</label>
+                    <label for="post-description">Description</label>
                     <textarea id="post-description" rows="5" required></textarea>
                 </div>
                 <div>
-                    <label for="post-skills">Required Skills (comma-separated):</label>
+                    <label for="post-skills">Required Skills</label>
                     <input type="text" id="post-skills" placeholder="e.g., HTML, CSS, JavaScript" required>
                 </div>
-                <button type="submit">Post Internship</button>
+                <button type="submit" class="btn-primary">Post Internship</button>
             </form>
         </section>
-        <!-- Add this new section at the end of your <main> element in index.html -->
 
-<section id="profile-section" class="content-section hidden">
-    <h2>My Profile</h2>
-    <form id="profile-form">
-        <!-- Fields for ALL users -->
-        <div>
-            <label for="profile-name">Full Name:</label>
-            <input type="text" id="profile-name" required>
-        </div>
-        <div>
-            <label for="profile-email">Email:</label>
-            <input type="email" id="profile-email" disabled> <!-- Email cannot be changed -->
-        </div>
-
-        <!-- Fields ONLY for Employers -->
-        <div id="employer-profile-fields" class="hidden">
-            <div>
-                <label for="profile-company-website">Company Website:</label>
-                <input type="text" id="profile-company-website" placeholder="e.g., https://mycompany.com">
-            </div>
-            <div>
-                <label for="profile-company-description">Company Description:</label>
-                <textarea id="profile-company-description" rows="4"></textarea>
-            </div>
-        </div>
-
-        <!-- Fields ONLY for Students -->
-        <div id="student-profile-fields" class="hidden">
-            <div>
-                <label for="profile-skills">My Skills (comma-separated):</label>
-                <input type="text" id="profile-skills" placeholder="e.g., HTML, CSS, JavaScript, Node.js">
-            </div>
-            <div>
-                <label for="profile-education">Education:</label>
-                <input type="text" id="profile-education" placeholder="e.g., BS in Computer Science">
-            </div>
-            <div>
-                <label for="profile-resume-link">Resume/Portfolio Link:</label>
-                <input type="text" id="profile-resume-link" placeholder="e.g., Link to your Google Drive resume or online portfolio">
-            </div>
-        </div>
-
-        <button type="submit">Update Profile</button>
-    </form>
-</section>
-
+        <!-- Profile -->
+        <section id="profile-section" class="content-section hidden small-container">
+            <h2>My Profile</h2>
+            <form id="profile-form" class="styled-form">
+                <div>
+                    <label for="profile-name">Full Name</label>
+                    <input type="text" id="profile-name" required>
+                </div>
+                <div>
+                    <label for="profile-email">Email</label>
+                    <input type="email" id="profile-email" disabled class="disabled-input">
+                </div>
+                <div id="employer-profile-fields" class="hidden">
+                    <div>
+                        <label for="profile-company-website">Company Website</label>
+                        <input type="text" id="profile-company-website" placeholder="https://...">
+                    </div>
+                    <div>
+                        <label for="profile-company-description">Company Description</label>
+                        <textarea id="profile-company-description" rows="4"></textarea>
+                    </div>
+                </div>
+                <div id="student-profile-fields" class="hidden">
+                    <div>
+                        <label for="profile-skills">My Skills</label>
+                        <input type="text" id="profile-skills">
+                    </div>
+                    <div>
+                        <label for="profile-education">Education</label>
+                        <input type="text" id="profile-education">
+                    </div>
+                    <div>
+                        <label for="profile-resume-link">Resume Link</label>
+                        <input type="text" id="profile-resume-link">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Update Profile</button>
+            </form>
+        </section>
     </main>
 
     <footer>
-        <p>© 2024 Internship Finder - Abdul Moeez</p>
+        <p>© 2024 Internship Finder - Designed by Abdul Moeez and Muhammad Abdullah Soban</p>
     </footer>
 
     <script src="js/app.js"></script>
