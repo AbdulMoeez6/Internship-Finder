@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Internship Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="notification-container"></div>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fa-solid fa-briefcase"></i> Internship Finder
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="internships.html">Browse</a></li>
+                <li id="nav-profile" class="hidden"><a href="profile.html">Profile</a></li>
+                <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
+                <li id="nav-register"><a href="register.html" class="btn-register">Register</a></li>
+                <li id="nav-student-dashboard" class="hidden"><a href="student-dashboard.html">Dashboard</a></li>
+                <li id="nav-employer-dashboard" class="hidden"><a href="employer-dashboard.html">Dashboard</a></li>
+                <li id="nav-post-internship" class="hidden"><a href="post-internship.html">Post Job</a></li>
+                <li id="nav-logout" class="hidden"><a href="#" onclick="logout(); return false;">Logout</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="login-section" class="content-section small-container">
+            <div class="auth-box">
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Login to continue your journey</p>
+                <form id="login-form">
+                    <div>
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" required placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Login</button>
+                    <p class="auth-footer">Don't have an account? <a href="register.html">Register here</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Internship Finder - Designed by Abdul Moeez and Muhammad Abdullah Soban</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Internship - Internship Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="notification-container"></div>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fa-solid fa-briefcase"></i> Internship Finder
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="internships.html">Browse</a></li>
+                <li id="nav-profile" class="hidden"><a href="profile.html">Profile</a></li>
+                <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
+                <li id="nav-register"><a href="register.html" class="btn-register">Register</a></li>
+                <li id="nav-student-dashboard" class="hidden"><a href="student-dashboard.html">Dashboard</a></li>
+                <li id="nav-employer-dashboard" class="hidden"><a href="employer-dashboard.html">Dashboard</a></li>
+                <li id="nav-post-internship" class="hidden"><a href="post-internship.html">Post Job</a></li>
+                <li id="nav-logout" class="hidden"><a href="#" onclick="logout(); return false;">Logout</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="post-internship-section" class="content-section small-container">
+            <h2>Post New Internship</h2>
+            <form id="post-internship-form" class="styled-form">
+                <div>
+                    <label for="post-title">Internship Title</label>
+                    <input type="text" id="post-title" required placeholder="e.g. Junior React Developer">
+                </div>
+                <div>
+                    <label for="post-company">Company Name</label>
+                    <input type="text" id="post-company" required disabled class="disabled-input">
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="post-category">Category</label>
+                        <select id="post-category" required>
+                            <option value="IT">IT</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Finance">Finance</option>
+                            <option value="HR">HR</option>
+                            <option value="Design">Design</option>
+                            <option value="Engineering">Engineering</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="post-location">Location</label>
+                        <input type="text" id="post-location" placeholder="e.g., Remote" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="post-stipend">Stipend</label>
+                        <input type="text" id="post-stipend" required placeholder="$500/month">
+                    </div>
+                    <div>
+                        <label for="post-duration">Duration</label>
+                        <input type="text" id="post-duration" required placeholder="3 months">
+                    </div>
+                </div>
+                <div>
+                    <label for="post-description">Description</label>
+                    <textarea id="post-description" rows="5" required></textarea>
+                </div>
+                <div>
+                    <label for="post-skills">Required Skills</label>
+                    <input type="text" id="post-skills" placeholder="e.g., HTML, CSS, JavaScript" required>
+                </div>
+                <button type="submit" class="btn-primary">Post Internship</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Internship Finder - Designed by Abdul Moeez and Muhammad Abdullah Soban</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
